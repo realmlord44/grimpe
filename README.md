@@ -1,2 +1,1 @@
-# grimpe
 climber test app
