@@ -4,12 +4,11 @@ import "./users.css";
 class Users extends React.Component {
 
   render(){
-    const title = this.props.user.user_name;
 
     return(
       <div className="users">
+        This is Users
         <div className="user-box">
-          {title}
         </div>
       </div>
     );

@@ -1,8 +1,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
 import Climbs from './components/climbs';
 import Users from './components/users';
@@ -13,21 +12,25 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: []
+      users: []
     };
   }
 
-  componentDidMount(){
-    const url = "raw.githubusercontent.com/realmlord44/grimpe/src/fakejson.json"
-    fetch(url)
-      .then(response => response.json())
-      .then((data) =>{
-        this.setState({
-          users: data
-        });
-    })
+  componentDidMount() {
+    this.fetchData();
   }
 
+fetchData(){
+  const url = "https://randomuser.me/api/?results=10"
+  fetch(url)
+    .then(response => response.json())
+    .then((data) =>{
+      this.setState({
+        users:data
+      })
+      console.log(data)
+    })
+}
   render() {
     return (
       <Router>
@@ -35,6 +38,7 @@ class App extends React.Component {
           <Nav />
           <Route path='/climbs' component={Climbs} />
           <Route path='/users' component={Users} />
+
         </div>
       </Router>
 
